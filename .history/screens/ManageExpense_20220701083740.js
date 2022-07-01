@@ -27,11 +27,6 @@ function ManageExpense({ route, navigation }) {
   }
 
   function confirmHandler() {
-    if (isEditing) {
-      expensesCtx.updateExpense(editedExpenseId, {});
-    } else {
-      expensesCtx.addExpense({});
-    }
     navigation.goBack();
   }
 

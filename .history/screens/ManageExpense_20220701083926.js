@@ -32,6 +32,7 @@ function ManageExpense({ route, navigation }) {
     } else {
       expensesCtx.addExpense({});
     }
+
     navigation.goBack();
   }
 
