@@ -12,3 +12,4 @@ web-build/
 .history/
 # macOS
 .DS_Store
+config.js
