@@ -15,22 +15,26 @@ export async function storeExpense(expenseData) {
 }
 
 export async function fetchExpenses() {
-  try {
-    const response = await axios.get(FIREBASE_URL + "/expenses.json");
+  const response = await axios.get(FIREBASE_URL + "/expenses.json");
 
-    const expenses = [];
-    for (const key in response.data) {
-      const expenseObj = {
-        id: key,
-        amount: response.data[key].amount,
-        description: response.data[key].description,
-        date: new Date(response.data[key].date),
-      };
-      expenses.push(expenseObj);
-    }
-
-    return expenses;
-  } catch (error) {
-    console.log(error);
+  const expenses = [];
+  for (const key in response.data) {
+    const expenseObj = {
+      id: key,
+      amount: response.data[key].amount,
+      description: response.data[key].description,
+      date: new Date(response.data[key].date),
+    };
+    expenses.push(expenseObj);
   }
+
+  return expenses;
+}
+
+export function updateExpense(id, expenseData) {
+  return axios.put(`${FIREBASE_URL}/expenses/${id}.json`, expenseData);
+}
+
+export function deleteExpense(id) {
+  return axios.delete(`${FIREBASE_URL}/expenses/${id}.json`);
 }
